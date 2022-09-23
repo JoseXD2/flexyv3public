@@ -59,7 +59,7 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
-		#if sys
+		#if desktop
 		var rawJson = File.getContent(Paths.chart(jsonInput.toLowerCase(),folder.toLowerCase())).trim();
 		#else
 		var rawJson = Assets.getText(Paths.chart(jsonInput.toLowerCase(), folder.toLowerCase())).trim();
@@ -75,7 +75,7 @@ class Song
 
 	public static function loadFromJsonManual(path:String):SwagSong
 	{
-		#if sys
+		#if desktop
 		var rawJson = File.getContent(path).trim();
 		#else
 		var rawJson = Assets.getText(path).trim();
