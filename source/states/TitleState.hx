@@ -82,7 +82,7 @@ class TitleState extends MusicBeatState
 
 	function startIntro()
 	{
-		#if !html5
+		#if !android
 		FlxG.autoPause=true;
 		#end
 		if (!initialized)
