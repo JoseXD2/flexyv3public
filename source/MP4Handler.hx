@@ -1,5 +1,6 @@
 package;
 
+#if !android
 import flixel.FlxBasic;
 import flixel.FlxG;
 
@@ -198,5 +199,5 @@ class MP4Handler extends FlxBasic
 		}
 	}
 }
-
+#end
 #end
