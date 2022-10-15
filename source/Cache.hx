@@ -19,6 +19,7 @@ import openfl.media.Sound;
 import flixel.FlxBasic;
 import openfl.system.System;
 import flixel.graphics.FlxGraphic;
+import openfl.utils.Assets as OpenFlAssets;
 
 class Cache {
   public static var persistentImages:Array<FlxGraphic> = [];
@@ -93,7 +94,7 @@ class Cache {
 		{
 			xmlData.set(path, Assets.getText(path));
 		}#if sys
-    else if(FileSystem.exists(path) && !xmlData.exists(path)){
+    else if(Assets.exists(path) && !xmlData.exists(path)){
       xmlData.set(path,File.getContent(path));
     }
     #end
@@ -112,7 +113,7 @@ class Cache {
 			textCache.set(path, Assets.getText(path));
 		}
 		#if sys
-		else if (FileSystem.exists(path) && !textCache.exists(path))
+		else if (Assets.exists(path) && !textCache.exists(path))
 		{
 			textCache.set(path, File.getContent(path));
 		}
