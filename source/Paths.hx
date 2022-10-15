@@ -68,7 +68,7 @@ class Paths
 	public static function getDirs(library:String,?base='assets/images'){
 		var folders:Array<String>=[];
 		// TODO: openflassets shit maybe?
-		#if sys
+		#if !android
 		for(folder in FileSystem.readDirectory('${base}/${library}') ){
 			if(!folder.contains(".") && FileSystem.isDirectory('${base}/${library}/${folder}')){
 				folders.push(folder);
@@ -157,7 +157,7 @@ class Paths
 			if(noteType!='' && noteType!='default'){
 				while(idx<pathsNotetype.length){
 					path = pathsNotetype[idx];
-					if(FileSystem.exists(path))
+					if(Assets.exists(path))
 						break;
 
 					idx++;
@@ -166,7 +166,7 @@ class Paths
 			}else{
 				while(idx<pathsNoNotetype.length){
 					path = pathsNoNotetype[idx];
-					if(FileSystem.exists(path))
+					if(Assets.exists(path))
 						break;
 
 					idx++;
@@ -199,7 +199,7 @@ class Paths
 				var image:Null<BitmapData>=null;
 				if(FileSystem.exists(pathPng)){
 					doShit=true;
-					image = BitmapData.fromFile(pathPng);
+					image = OpenFlAssets.getBitmapData(pathPng);
 					FlxG.bitmap.add(image,false,bitmapName);
 				}
 				if(image!=null)
@@ -224,7 +224,7 @@ class Paths
 		#if sys
 		else{
 			var path = noteSkinPath('${key}',library,skin,modifier,noteType,useOpenFLAssetSystem);
-			if(FileSystem.exists(path)){
+			if(Assets.exists(path)){
 				return Cache.getText(path);
 			}
 		}
@@ -257,9 +257,9 @@ class Paths
 				if(!FlxG.bitmap.checkCache(bitmapName)){
 					doShit=false;
 					var pathPng = noteSkinPath('${key}.png',library,skin,modifier,noteType,useOpenFLAssetSystem);
-					if(FileSystem.exists(pathPng)){
+					if(Assets.exists(pathPng)){
 						doShit=true;
-						FlxG.bitmap.add(BitmapData.fromFile(pathPng),false,bitmapName);
+						FlxG.bitmap.add(OpenFlAssets.getBitmapData(pathPng),false,bitmapName);
 					}
 				}
 				if(doShit)
