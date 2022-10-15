@@ -35,7 +35,7 @@ class InitState extends FlxUIState {
   public static function getNoteskins(){
     var currentOptions = OptionUtils.options;
     Note.skinManifest.clear();
-    #if sys
+    #if windows 
     OptionUtils.noteSkins = Paths.getDirs("skins");
     #else
 		OptionUtils.noteSkins = ['default', 'quants', 'etternaquants'];
@@ -50,7 +50,7 @@ class InitState extends FlxUIState {
 
   public static function getCharacters(){
     EngineData.characters=[];
-    #if sys
+    #if windows 
     for(file in FileSystem.readDirectory('assets/characters/data') ){
       if(file.endsWith(".json")){
         var name = file.replace(".json","");
@@ -144,8 +144,8 @@ class InitState extends FlxUIState {
 
 
     var canCache=false;
-    #if sys
-      #if cpp // IDK IF YOU CAN DO "#IF SYS AND CPP" OR THIS'LL WORK I THINK
+    #if windows 
+      #if windows // IDK IF YOU CAN DO "#IF SYS AND CPP" OR THIS'LL WORK I THINK
         canCache=true;
       #end
     #end
