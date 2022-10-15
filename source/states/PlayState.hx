@@ -17,6 +17,7 @@ import flixel.FlxGame;
 import flixel.FlxObject;
 import flixel.util.FlxSpriteUtil;
 import flixel.FlxSprite;
+import openfl.utils.Assets as OpenFlAssets;
 import flixel.util.FlxAxes;
 import flixel.FlxState;
 import flixel.group.FlxSpriteGroup;
@@ -768,20 +769,20 @@ class PlayState extends MusicBeatState
 				if(storyDifficulty==3)suffix='Asshole';
 				var dialogue = Paths.songJson(songData.chartName.toLowerCase() + "/dialogue" + suffix);
 				#if sys
-				if(FileSystem.exists(dialogue))
-					dialogueData =cast Json.parse(File.getContent(dialogue));
+				if(Assets.exists(dialogue))
+					dialogueData =cast Json.parse(Assets.getText(dialogue));
 
 				var eDialogue = Paths.songJson(songData.chartName.toLowerCase() + "/endDialogue" + suffix);
-				if(FileSystem.exists(eDialogue))
-					endDialogueData =cast Json.parse(File.getContent(eDialogue));
+				if(Assets.exists(eDialogue))
+					endDialogueData =cast Json.parse(Assets.getText(eDialogue));
 
 				var cutscene = Paths.songJson(songData.chartName.toLowerCase() + "/cutscene" + suffix);
-				if (FileSystem.exists(cutscene))
-					cutsceneData = cast Json.parse(File.getContent(cutscene));
+				if (Assets.exists(cutscene))
+					cutsceneData = cast Json.parse(Assets.getText(cutscene));
 
 				var eCutscene = Paths.songJson(songData.chartName.toLowerCase() + "/endCutscene" + suffix);
-				if (FileSystem.exists(eCutscene))
-					endCutsceneData = cast Json.parse(File.getContent(eCutscene));
+				if (Assets.exists(eCutscene))
+					endCutsceneData = cast Json.parse(Assets.getText(eCutscene));
 				#else
 				if (Assets.exists(dialogue))
 					dialogueData = cast Json.parse(Assets.getText(dialogue));
