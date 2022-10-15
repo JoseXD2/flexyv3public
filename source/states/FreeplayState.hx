@@ -186,7 +186,7 @@ class FreeplayState extends MusicBeatState
 		}
 
 		
-		#if sys
+		#if windows 
 		var otherSongs = Paths.getDirs("songs","assets");
 		for(song in otherSongs){
 			var songFolder = 'assets/songs/${song.toLowerCase()}';
@@ -368,7 +368,7 @@ class FreeplayState extends MusicBeatState
 		songNames.push(songData.chartName.toLowerCase());
 		songs.push(songData);
 		var songDiffs:Array<Int> = [];
-		#if sys
+		#if !android
 		if(FileSystem.isDirectory('assets/songs/${songData.chartName.toLowerCase()}') ){
 			for (file in FileSystem.readDirectory('assets/songs/${songData.chartName.toLowerCase()}'))
 			{
